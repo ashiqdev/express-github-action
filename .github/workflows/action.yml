@@ -1,0 +1,19 @@
+name: "Github action Test"
+on:
+  push:
+    branch:
+      - master
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: "Install node"
+        uses: actions/setup-node@v1
+      - name: "Install global packages"
+        run: npm i -g mocha yarn
+      - name: "Install deps"
+        run: yarn
+      - name: "Run Tests"
+        run: yarn test
